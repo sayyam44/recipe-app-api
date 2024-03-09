@@ -1,0 +1,3 @@
+#we have made this seperate req files as we dont need the flake8 package where we are running the deployed image
+#requirements.dev.txt only at development server and not the production sertver
+flake8>=4.0.1,<4.1
