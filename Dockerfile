@@ -20,6 +20,10 @@ ARG DEV=false
 RUN python -m venv /py && \
 #to install the python package manajor i.e. pip inside the virtual env
     /py/bin/pip install --upgrade pip && \
+    #install postgresql client in alpine imag(basically we are installing the postgresql adpter in docker env)
+    apk add --update --no-cache postgresql-client jpeg-dev && \
+    apk add --update --no-cache --virtual .tmp-build-deps \
+        build-base postgresql-dev musl-dev zlib zlib-dev && \
     #installing the reqs in virtual env
     /py/bin/pip install -r /tmp/requirements.txt && \
     #the below if case is to use requirements.dev.txt only at development server and not the production sertver
@@ -27,6 +31,7 @@ RUN python -m venv /py && \
         then /py/bin/pip install -r /tmp/requirements.dev.txt ; \
     fi && \
     rm -rf /tmp && \
+    apk del .tmp-build-deps && \
     #to add a new user inside the image
     adduser \
         --disabled-password \

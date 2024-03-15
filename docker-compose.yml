@@ -10,4 +10,29 @@ services:
       - "8000:8000"
     volumes: #mapping the directories into docker container
       - ./app:/app
-    command: python manage.py runserver 0.0.0.0:8000
+    command: > #this command is for waiting for db to be up then to migrate the database and then run the server.
+      sh -c "python manage.py wait_for_db && configs:
+             python manage.py migrate &&
+             python manage.py runserver 0.0.0.0:8000"
+    environment:
+      - DB_HOST=db
+      - DB_NAME=devdb
+      - DB_USER=devuser
+      - DB_PASS=changeme
+    depends_on:
+      - db
+
+  db:
+    image: postgres:13-alpine
+    volumes:
+      - dev-db-data:/var/lib/postgresql/data
+    environment:
+    #To set the initial database configuration for new db service.
+      - POSTGRES_DB=devdb
+      - POSTGRES_USER=devuser
+      - POSTGRES_PASSWORD=changeme
+
+
+volumes:
+  dev-db-data:
+  dev-static-data:
