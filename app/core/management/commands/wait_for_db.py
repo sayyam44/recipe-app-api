@@ -7,6 +7,7 @@ from psycopg2 import OperationalError as Psycopg2OpError
 
 from django.db.utils import OperationalError
 from django.core.management.base import BaseCommand
+from django.db import connection #new changes
 
 
 class Command(BaseCommand):
@@ -19,7 +20,8 @@ class Command(BaseCommand):
         while db_up is False:
             try:
                 # self.check(databases=['default'])
-                self.check()
+                # self.check() #old code
+                connection.ensure_connection() #new changes
 
                 db_up = True
             except (Psycopg2OpError, OperationalError):
