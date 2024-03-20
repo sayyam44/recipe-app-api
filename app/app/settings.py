@@ -123,3 +123,6 @@ USE_TZ = True
 # https://docs.djangoproject.com/en/2.1/howto/static-files/
 
 STATIC_URL = '/static/'
+
+#setting the configuration for auth_user_model
+AUTH_USER_MODEL = 'core.User'
