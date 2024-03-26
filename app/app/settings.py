@@ -14,8 +14,8 @@ import os
 from pathlib import Path
 
 # Build paths inside the project like this: os.path.join(BASE_DIR, ...)
-BASE_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
-
+# BASE_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
+BASE_DIR = Path(__file__).resolve().parent.parent
 
 # Quick-start development settings - unsuitable for production
 # See https://docs.djangoproject.com/en/2.1/howto/deployment/checklist/
@@ -124,5 +124,6 @@ USE_TZ = True
 
 STATIC_URL = '/static/'
 
+DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
 #setting the configuration for auth_user_model
 AUTH_USER_MODEL = 'core.User'

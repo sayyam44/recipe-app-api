@@ -2,7 +2,7 @@
 Django command to wait for the database to be available
 """
 import time
-
+from django.db import connections
 from psycopg2 import OperationalError as Psycopg2OpError
 
 from django.db.utils import OperationalError
@@ -22,7 +22,9 @@ class Command(BaseCommand):
                 # from django.db import connection
                 # connection.ensure_connection()
                 # db_up = True
-                self.check(databases=['default'])
+
+                # self.check(databases=['default'])
+                connections['default'].ensure_connection()
                 # self.check() #old code
                 # connection.ensure_connection() #new changes
                 db_up = True
