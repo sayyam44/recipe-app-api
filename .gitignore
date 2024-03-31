@@ -50,7 +50,7 @@ coverage.xml
 *.py,cover
 .hypothesis/
 .pytest_cache/
-cover/
+
 
 # Translations
 *.mo
@@ -73,7 +73,7 @@ instance/
 docs/_build/
 
 # PyBuilder
-.pybuilder/
+# .pybuilder/
 target/
 
 # Jupyter Notebook
@@ -108,7 +108,7 @@ ipython_config.py
 #   pdm stores project-wide configurations in .pdm.toml, but it is recommended to not include it
 #   in version control.
 #   https://pdm.fming.dev/#use-with-ide
-.pdm.toml
+# .pdm.toml
 
 # PEP 582; used by e.g. github.com/David-OConnor/pyflow and github.com/pdm-project/pdm
 __pypackages__/
