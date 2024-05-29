@@ -1,4 +1,4 @@
-#to exclude some of the files from linting
+
 [flake8]
 exclude =
   migrations,
