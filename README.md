@@ -1,7 +1,7 @@
-#Recipe App API 
+# Recipe App API 
 This backend system built with Django REST Framework, empowers recipe enthusiasts and developers alike to create, manage, and explore recipes. Key features include user authentication, recipe CRUD operations, ingredient management, and user profiles.
 
-#Project Highlights:
+# Project Highlights:
 
 🌐 Tech Stack: Django REST Framework, PostgreSQL, Docker
 🚀 Functionality: User authentication, Recipe CRUD, Ingredient and Tag management
